@@ -1,0 +1,134 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "新北市政府資料開放平台",
+    "version": "1.0.0",
+    "title": "NTPC Open Data"
+  },
+  "host": "data.ntpc.gov.tw",
+  "basePath": "/od/data/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/54DDDC93-589C-4858-9C95-18B2046CC1FC": {
+      "get": {
+        "summary": "新北市公共自行車租賃系統(YouBike)",
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "Sno",
+                  "sna",
+                  "tot",
+                  "sbi",
+                  "sarea",
+                  "mday",
+                  "lat",
+                  "lng",
+                  "ar",
+                  "sareaen",
+                  "snaen",
+                  "aren",
+                  "bemp",
+                  "act"
+                ],
+                "properties": {
+                  "Sno": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sna": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "tot": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sbi": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sarea": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "mday": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "lat": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "lng": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "ar": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sareaen": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "snaen": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "aren": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "bemp": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "act": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "$format",
+            "in": "query",
+            "type": "string",
+            "description": "資料格式json",
+            "required": true
+          },
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer",
+            "description": "取得資料筆數(系統最多給予2000筆)",
+            "required": false
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer",
+            "description": "跳過資料筆數",
+            "required": false
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Platform, View, Image } from "react-native";
+import { VictoryPie,VictoryLabel } from "victory-native";
 import MapView, { Marker } from "react-native-maps";
 import Constants from "expo-constants";
 import * as Location from "expo-location";
@@ -10,8 +11,19 @@ import mystyle from "./custom.json";
 const UBIKE_URL =
   "https://data.ntpc.gov.tw/api/datasets/71CD1490-A2DF-4198-BEF1-318479775E8A/json/preview";
 
+const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
+const HAS_SET_KEY = "HAS_SET_KEY";
 
+
+const SetXY = ({site}) => {
+
+
+};
 const App = () => {
+
+  
+  const datacolor = ["#00A6A6","#FAB419"];
+
   const [region, setRegion] = useState({
     longitude: 121.544637,
     latitude: 25.024624,
@@ -115,10 +127,19 @@ const App = () => {
             title={`${site.sna} ${site.sbi}/${site.tot}`}
             description={site.ar}
           >
-            <Image
-              source={require("./imgs/ubikeic.png")}
-              style={{ width: 25, height: 25 }}
-              resizeMode="contain"
+            <VictoryPie
+            //height={80}
+            radius={15}
+            data={[
+              { x: site.tot-site.sbi, y: 100-(site.sbi/site.tot)*100 },
+              { x:site.sbi, y: (site.sbi/site.tot)*100 },
+            ]}
+            colorScale={datacolor}
+            labelRadius={4}
+            labelComponent={<VictoryLabel style={{fontSize:9,fill:'white'}}/>}
+            
+            //innerRadius={10}
+            //position={{absolute}}
             />
           </Marker>
         ))}
